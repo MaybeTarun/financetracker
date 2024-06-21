@@ -45,7 +45,7 @@ export const Dashboard = () => {
       </SignedOut>
       <SignedIn>
         <div className='left'>
-          <h1>Hello, {user?.firstName}!</h1>
+          <h1>Hello, {user?.username}!</h1>
           <div className='total'>
             <div className='spent'>
               <span>Total Spent:</span><br />

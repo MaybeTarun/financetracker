@@ -42,6 +42,6 @@
 }
 
 .buttons button:hover {
-    cursor: pointer;
+    cursor: url('../../assets/pointer.svg'), auto;
     background-color: #32aa32;
 }
