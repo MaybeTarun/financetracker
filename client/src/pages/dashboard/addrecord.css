@@ -1,0 +1,47 @@
+.form-container {
+    padding: 20px;
+    padding-bottom: 0px;
+}
+
+.form-field {
+    padding: 5px;
+    font-size: 1rem;
+}
+
+.form-field label {
+    padding-right: 10px;
+}
+
+.form-field input {
+    float: right;
+    width: 200px;
+    padding: 2px;
+}
+
+.form-field select {
+    float: right;
+    width: 200px;
+    padding: 2px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 30px;
+}
+
+.buttons button {
+    padding: 5px 10px;
+    background-color: #80B9AD;
+    border-radius: 7px;
+    font-size: 1rem;
+}
+
+.buttons button:first-child:hover {
+    background-color: #f44336;
+}
+
+.buttons button:hover {
+    cursor: pointer;
+    background-color: #32aa32;
+}

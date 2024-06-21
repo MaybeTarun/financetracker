@@ -1,4 +1,4 @@
-# Just a personal finance tracking website made using React, TypeScript and Vite
+## Just a personal finance tracking website made using React, TypeScript and Vite
 
 Setup to get React working in Vite with HMR and some ESLint rules.
 
