@@ -73,7 +73,7 @@ export const AddRecord = () => {
                         <option value="">Select a Category</option>
                         <option value="Food & Dining">Food & Dining</option>
                         <option value="Shopping">Shopping</option>
-                        <option value="Travel">Travelling</option>
+                        <option value="Travelling">Travelling</option>
                         <option value="Bills & Utilities">Bills & Utilities</option>
                         <option value="Entertainment">Entertainment</option>
                         <option value="Medical">Medical</option>

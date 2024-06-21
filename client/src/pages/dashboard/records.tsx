@@ -3,7 +3,7 @@ import { useRecords } from '../../context/records-context';
 import './records.css';
 
 export const Records = () => {
-  const { records } = useRecords();
+  const { records, deleteRecord } = useRecords();
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropdown = () => {
@@ -18,7 +18,7 @@ export const Records = () => {
       </div>
       <div className={`records-container ${isOpen ? 'open' : 'closed'}`}>
         {records.map(record => (
-          <div key={record.id} className="record-wrapper">
+          <div key={record._id} className="record-wrapper">
             <div className="record-card">
               <div className="record-header">
                 <div className="record-description">
@@ -35,14 +35,10 @@ export const Records = () => {
                 </span>
               </div>
             </div>
-            <button className="record-delete" onClick={() => handleDelete(record.id)}>✕</button>
+            <button className="record-delete" onClick={() => deleteRecord(record._id??"")}>✕</button>
           </div>
         ))}
       </div>
     </div>
   );
-
-  function handleDelete(id: string | undefined) {
-    // Handle delete functionality
-  }
 };

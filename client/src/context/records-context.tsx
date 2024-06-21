@@ -2,7 +2,7 @@ import { useUser } from "@clerk/clerk-react";
 import { createContext, useContext, useEffect, useState } from "react";
 
 interface Records {
-    id?: string;
+    _id?: string;
     userId: string;
     date: Date;
     description: string;
@@ -14,8 +14,8 @@ interface Records {
 interface RecordsContextType {
     records: Records[];
     addRecord: (record: Records) => void;
-    updateRecord: (id: string, newRecord: Partial<Records>) => void;
-    deleteRecord: (id: string) => void;
+    // updateRecord: (_id: string, newRecord: Partial<Records>) => void;
+    deleteRecord: (_id: string) => void;
 }
 
 export const RecordsContext = createContext<RecordsContextType | undefined>(undefined);
@@ -55,7 +55,19 @@ export const RecordsProvider = ({children} : {children:React.ReactNode;}) => {
         } catch (err) {}
     };
 
-    return <RecordsContext.Provider value={{records, addRecord}}>
+    const deleteRecord = async (_id: string) => {
+        const reponse = await fetch(`http://localhost:3001/records/${_id}`, {
+            method: "DELETE",
+        });
+        try {
+            if (reponse.ok) {
+                const delRecord = await reponse.json();
+                setRecords((prev) => prev.filter((record) => record._id !== delRecord._id));
+            }
+        } catch (err) {}
+    };
+
+    return <RecordsContext.Provider value={{records, addRecord, deleteRecord}}>
         {" "}
         {children}
     </RecordsContext.Provider>
