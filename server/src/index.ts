@@ -2,6 +2,8 @@ import express, {Express} from "express";
 import mongoose from "mongoose";
 import router from "./routes/records";
 import cors from "cors";
+import dotenv from 'dotenv';
+dotenv.config();
 
 const app: Express = express();
 const port = process.env.PORT || 3001;
@@ -9,7 +11,7 @@ const port = process.env.PORT || 3001;
 app.use(express.json());
 app.use(cors());
 
-const mongoURI: string = process.env.MONGO_URI || "";
+const mongoURI: string = process.env.mongoURI as string;
 
 mongoose
     .connect(mongoURI)
