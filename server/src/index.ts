@@ -18,12 +18,12 @@ mongoose
     .then(() => console.log("Connected to DB"))
     .catch((err) => console.error("Failed DB connection", err));
 
-app.use("/records", router);
+app.use("https://financetrackerapi.vercel.app/records", router);
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
 
-app.get('/api/hello', (req, res) => {
+app.get('/hello', (req, res) => {
     res.send({ message: 'Hello from Vercel!' });
 });
