@@ -2,7 +2,6 @@ import express, {Express} from "express";
 import mongoose from "mongoose";
 import router from "./routes/records";
 import cors from "cors";
-import RecordsModel from "./schema/records";
 
 const app: Express = express();
 const port = process.env.PORT || 3001;
@@ -10,7 +9,7 @@ const port = process.env.PORT || 3001;
 app.use(express.json());
 app.use(cors(
     {
-        origin: [""],
+        origin: ["https://financetrackerapi.vercel.app/"],
         methods: ["POST", "GET", "DELETE", "PUT"],
         credentials: true
     }
