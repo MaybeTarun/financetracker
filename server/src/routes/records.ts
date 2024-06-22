@@ -7,6 +7,7 @@ router.get("/getAll/:userId", async (req: Request, res: Response) => {
     try {
         const userId = req.params.userId;
         const records = await RecordsModel.find({userId: userId});
+        res.send({ message: 'Hello from Vercel!' });
         if (records.length < 0) {
             return res.status(404).send("No Records Found");
         }
