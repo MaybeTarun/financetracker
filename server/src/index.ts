@@ -22,4 +22,8 @@ app.use("/records", router);
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
-})
+});
+
+app.get('/api/hello', (req, res) => {
+    res.send({ message: 'Hello from Vercel!' });
+});

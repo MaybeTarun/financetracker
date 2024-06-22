@@ -3,7 +3,7 @@ import RecordsModel from "../schema/records";
 
 const router = express.Router();
 
-router.get("https://financetrackerapi.vercel.app/getAll/:userId", async (req: Request, res: Response) => {
+router.get("/getAll/:userId", async (req: Request, res: Response) => {
     try {
         const userId = req.params.userId;
         const records = await RecordsModel.find({userId: userId});
@@ -16,7 +16,7 @@ router.get("https://financetrackerapi.vercel.app/getAll/:userId", async (req: Re
     }
 });
 
-router.post("https://financetrackerapi.vercel.app/", async (req: Request, res: Response) => {
+router.post("/", async (req: Request, res: Response) => {
     try {
         const newRecordBody = req.body;
         const newRecord = new RecordsModel(newRecordBody);
@@ -28,7 +28,7 @@ router.post("https://financetrackerapi.vercel.app/", async (req: Request, res: R
     }
 });
 
-router.put("https://financetrackerapi.vercel.app/:id", async (req: Request, res: Response) => {
+router.put("/:id", async (req: Request, res: Response) => {
     try {
         const id = req.params.id;
         const newRecordBody = req.body;
@@ -46,7 +46,7 @@ router.put("https://financetrackerapi.vercel.app/:id", async (req: Request, res:
     }
 });
 
-router.delete("https://financetrackerapi.vercel.app/:id", async (req: Request, res: Response) => {
+router.delete("/:id", async (req: Request, res: Response) => {
     try {
         const id = req.params.id;
         const record = await RecordsModel.findByIdAndDelete(id);
