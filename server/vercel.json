@@ -8,7 +8,7 @@
     ],
     "routes": [
       {
-        "src": "/records/(.*)",
+        "src": "/routes/(.*)",
         "dest": "src/index.ts"
       },
       {
