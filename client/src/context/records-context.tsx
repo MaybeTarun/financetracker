@@ -15,7 +15,7 @@ interface RecordsContextType {
     records: Records[];
     addRecord: (record: Records) => void;
     // updateRecord: (_id: string, newRecord: Partial<Records>) => void;
-    deleteRecord: (_id: string) => void;
+    deleteRecord: (id: string) => void;
 }
 
 export const RecordsContext = createContext<RecordsContextType | undefined>(undefined);
@@ -27,9 +27,9 @@ export const RecordsProvider = ({children} : {children:React.ReactNode;}) => {
     const { user } = useUser();
     const fetchRecords = async () => {
         if (!user) return;
-        const reponse = await fetch(`http://localhost:3001/records/getAll/${user.id}`);
-        if (reponse.ok) {
-            const records = await reponse.json();
+        const response = await fetch(`http://localhost:3001/records/getAll/${user.id}`);
+        if (response.ok) {
+            const records = await response.json();
             // console.log(records);
             setRecords(records);
         }
@@ -40,7 +40,7 @@ export const RecordsProvider = ({children} : {children:React.ReactNode;}) => {
     }, [user]);
 
     const addRecord = async (record: Records) => {
-        const reponse = await fetch("http://localhost:3001/records", {
+        const response = await fetch("http://localhost:3001/records", {
             method: "POST",
             body: JSON.stringify(record),
             headers: {
@@ -48,21 +48,21 @@ export const RecordsProvider = ({children} : {children:React.ReactNode;}) => {
             },
         });
         try {
-            if (reponse.ok) {
-                const newRecord = await reponse.json();
+            if (response.ok) {
+                const newRecord = await response.json();
                 setRecords((prev) => [...prev, newRecord]);
             }
         } catch (err) {}
     };
 
-    const deleteRecord = async (_id: string) => {
-        const reponse = await fetch(`http://localhost:3001/records/${_id}`, {
+    const deleteRecord = async (id: string) => {
+        const response = await fetch(`http://localhost:3001/records/${id}`, {
             method: "DELETE",
         });
         try {
-            if (reponse.ok) {
-                const delRecord = await reponse.json();
-                setRecords((prev) => prev.filter((record) => record._id !== delRecord._id));
+            if (response.ok) {
+                const deletedRecord = await response.json();
+                setRecords((prev) => prev.filter((record) => record._id !== deletedRecord._id));
             }
         } catch (err) {}
     };

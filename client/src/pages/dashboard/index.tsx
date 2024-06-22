@@ -5,7 +5,6 @@ import './index.css';
 import { AddRecord } from './addrecord';
 import { Records } from './records';
 import { useRecords } from '../../context/records-context';
-import login from '../../assets/login.png';
 
 export const Dashboard = () => {
   const { user } = useUser();
@@ -25,7 +24,7 @@ export const Dashboard = () => {
         totalSpent += record.amount;
       }
     });
-    return (totalSpent * -1).toLocaleString('en-IN', { maximumFractionDigits: 2 });
+    return totalSpent.toLocaleString('en-IN', { maximumFractionDigits: 2 });
   };
 
   const calculateTotalEarned = () => {
@@ -62,7 +61,6 @@ export const Dashboard = () => {
           <div className='profile'>
             <div className='profilename'>
               <UserButton showName>
-                <button></button>
               </UserButton>
             </div>
             <div className='signoutbtn'>

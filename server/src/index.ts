@@ -2,6 +2,7 @@ import express, {Express} from "express";
 import mongoose from "mongoose";
 import router from "./routes/records";
 import cors from "cors";
+import RecordsModel from "./schema/records";
 
 const app: Express = express();
 const port = process.env.PORT || 3001;

@@ -49,7 +49,7 @@ router.put("/:id", async (req: Request, res: Response) => {
 router.delete("/:id", async (req: Request, res: Response) => {
     try {
         const id = req.params.id;
-        const record = await RecordsModel.findById(id);
+        const record = await RecordsModel.findByIdAndDelete(id);
 
         if (!record) return res.status(404).send();
 
