@@ -10,7 +10,7 @@ const port = process.env.PORT || 3001;
 app.use(express.json());
 app.use(cors());
 
-const mongoURI: string = "mongodb+srv://maybetarun:Tarun2003@cluster0.wvlboyv.mongodb.net/";
+const mongoURI: string = mongoURI;
 
 mongoose
     .connect(mongoURI)
