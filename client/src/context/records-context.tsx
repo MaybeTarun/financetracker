@@ -27,7 +27,7 @@ export const RecordsProvider = ({children} : {children:React.ReactNode;}) => {
     const { user } = useUser();
     const fetchRecords = async () => {
         if (!user) return;
-        const response = await fetch(`http://localhost:3001/records/getAll/${user.id}`);
+        const response = await fetch(`http://financetrackerserver.vercel.app/records/getAll/${user.id}`);
         if (response.ok) {
             const records = await response.json();
             // console.log(records);
@@ -40,7 +40,7 @@ export const RecordsProvider = ({children} : {children:React.ReactNode;}) => {
     }, [user]);
 
     const addRecord = async (record: Records) => {
-        const response = await fetch("http://localhost:3001/records", {
+        const response = await fetch("http://financetrackerserver.vercel.app/records", {
             method: "POST",
             body: JSON.stringify(record),
             headers: {
@@ -56,7 +56,7 @@ export const RecordsProvider = ({children} : {children:React.ReactNode;}) => {
     };
 
     const deleteRecord = async (id: string) => {
-        const response = await fetch(`http://localhost:3001/records/${id}`, {
+        const response = await fetch(`http://financetrackerserver.vercel.app/records/${id}`, {
             method: "DELETE",
         });
         try {
